@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title ToDoMVC + Sinatra + ActiveRecord
+    =css :main, :media => 'screen'
+  %body
+    #container
+      %header
+      %div#main{'role' => 'main'}
+        = yield
+    %footer
+    =js :main
+    =yield_content :js_footer
+
+
+
