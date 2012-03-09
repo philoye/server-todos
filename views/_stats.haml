@@ -1,0 +1,16 @@
+%script#stats-template{"type" => "text/template"}
+  <% if (total) { %>
+  %span.todo-count
+    %span.number <%= remaining %>
+    %span.word <%= remaining == 1 ? 'item' : 'items' %>
+    left.
+  <% } %>
+  <% if (done) { %>
+  %span.todo-clear
+    %a{"href" => "#"}
+      Clear
+      %span.number-done <%= done %>
+      completed
+      %span.word-done <%= done == 1 ? 'item' : 'items' %>
+  <% } %>
+

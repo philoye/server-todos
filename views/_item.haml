@@ -1,0 +1,12 @@
+/ Can't figure out how to tell HAML not to escape the raw HTML lines
+%script#item-template{"type" => "text/template"}
+  <div class="todo <%= done ? 'done' : '' %>">
+  %div.display
+    <input class="check" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+    %div.todo-text
+    %span.todo-destroy
+  %div.edit
+    %input.todo-input{"type" => "text", "value" =>""}/
+  </div>
+
+
