@@ -17,6 +17,7 @@ class App < Sinatra::Base
   register Sinatra::Contrib
   register Sinatra::CompassSupport
   register Sinatra::AssetPack
+  helpers  Sinatra::Partials
 
   configure :development do |config|
     require "sinatra/reloader"
