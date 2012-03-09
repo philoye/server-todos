@@ -1,12 +1,12 @@
 $ ->
-  window.Todo = Backbone.Model.extend(
+  window.Todo = Backbone.Model.extend
     defaults: ->
-      done: false
+      done:  false
       order: Todos.nextOrder()
 
     toggle: ->
       @save done: not @get("done")
-  )
+
   window.TodoList = Backbone.Collection.extend(
     model: Todo
     url: "/api/todos"
@@ -25,7 +25,7 @@ $ ->
       todo.get "order"
   )
   window.Todos = new TodoList
-  window.TodoView = Backbone.View.extend(
+  window.TodoView = Backbone.View.extend
     tagName: "li"
     template: _.template($("#item-template").html())
     events:
@@ -68,7 +68,7 @@ $ ->
 
     clear: ->
       @model.destroy()
-  )
+
   window.AppView = Backbone.View.extend(
     el: $("#todoapp")
     statsTemplate: _.template($("#stats-template").html())

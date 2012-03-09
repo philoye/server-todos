@@ -2,8 +2,7 @@ source :rubygems
 
 gem 'sinatra', :require => 'sinatra/base'
 
-gem 'sinatra-contrib'
-gem 'sinatra-content-for2', :require => 'sinatra/content_for2'
+gem 'sinatra-contrib',      :require => 'sinatra/contrib'
 gem 'sinatra-support',      :require => 'sinatra/support'
 gem 'sinatra-assetpack',    :require => 'sinatra/assetpack'
 #gem 'sinatra-backbone', :git => 'git://github.com/rstacruz/sinatra-backbone.git', :ref => '1882df0a46', :require => 'sinatra/backbone'

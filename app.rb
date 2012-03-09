@@ -12,9 +12,9 @@ class App < Sinatra::Base
   enable   :show_exceptions  if development?
   set      :root, File.dirname(__FILE__)
 
+  register Sinatra::Contrib
   register Sinatra::CompassSupport
   register Sinatra::AssetPack
-  helpers Sinatra::ContentFor2
 
   configure :development do |config|
     require "sinatra/reloader"

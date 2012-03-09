@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration
   def self.up
     create_table :items do |t|
-      t.string    :text
+      t.string   :text
       t.integer  :order
       t.boolean  :done
       t.timestamps
