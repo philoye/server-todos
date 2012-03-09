@@ -3,11 +3,13 @@ require 'bundler'
 Bundler.require
 require 'yaml'
 
-['models/*', 'helpers/*'].each do |dir|
-  Dir[dir].each  { |f| require "./#{f}" }
-end
-
 class App < Sinatra::Base
+
+  (
+   Dir['./models/*.rb'].sort +
+   Dir['./helpers/*.rb'].sort
+  ).uniq.each { |rb| require rb }
+
   enable   :raise_errors, :logging
   enable   :show_exceptions  if development?
   set      :root, File.dirname(__FILE__)
