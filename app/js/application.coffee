@@ -82,6 +82,7 @@ $ ->
       Todos.bind "add", @addOne, this
       Todos.bind "reset", @addAll, this
       Todos.bind "all", @render, this
+      $('#todo-list').empty()
       #Todos.fetch() # we are bootstrapping the collection in the HTML
 
     render: ->

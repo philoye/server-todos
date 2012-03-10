@@ -16,6 +16,11 @@
         %span.ui-tooltip-top{"style" => "display:none;"} Press Enter to save this task
       %div#todos
         %ul#todo-list
+          - @todos.each do |todo|
+            - t = todo.serializable_hash
+            - t['done_class']   = t['done'] ? 'done' : ''
+            - t['done_checked'] = t['done'] ? 'checked' : ''
+            =hamstache :item, :mustache => t
       %div#todo-stats
 
 
