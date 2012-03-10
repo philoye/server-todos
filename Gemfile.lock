@@ -32,6 +32,7 @@ GEM
     i18n (0.6.0)
     jsmin (1.0.1)
     multi_json (1.1.0)
+    mustache (0.99.4)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -72,6 +73,7 @@ DEPENDENCIES
   coffee-script
   compass
   haml
+  mustache
   rake
   sass
   sinatra

@@ -15,5 +15,6 @@ gem 'haml'
 gem 'sass'
 gem 'compass'
 gem 'rake'
+gem 'mustache', :require => 'mustache/sinatra'
 gem 'coffee-script'
 

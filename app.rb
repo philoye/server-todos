@@ -17,6 +17,8 @@ class App < Sinatra::Base
   register Sinatra::Contrib
   register Sinatra::CompassSupport
   register Sinatra::AssetPack
+  register Mustache::Sinatra
+
   helpers  Sinatra::Partials
 
   configure :development do |config|
