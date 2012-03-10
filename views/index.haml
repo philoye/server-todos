@@ -20,6 +20,8 @@
 
 
 / Templates
-=partial :item
-=partial :stats
+%script#item{"type" => "text/html"}
+  = hamstache :item
+%script#stats{"type" => "text/html"}
+  = hamstache :stats
 

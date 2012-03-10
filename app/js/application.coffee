@@ -26,8 +26,6 @@ $ ->
   )
   window.Todos = new TodoList
   window.TodoView = Backbone.View.extend
-    tagName: "li"
-    template: _.template($("#item-template").html())
     events:
       "click .check": "toggleDone"
       "dblclick div.todo-text": "edit"
@@ -39,7 +37,10 @@ $ ->
       @model.bind "destroy", @remove, this
 
     render: ->
-      $(@el).html @template(@model.toJSON())
+      _.extend @model,
+        done_checked: if @model.get('done') then 'checked' else ''
+        done_class:   if @model.get('done') then 'done' else ''
+      $(@el).html ich.item(@model)
       @setText()
       this
 
@@ -71,10 +72,9 @@ $ ->
 
   window.AppView = Backbone.View.extend(
     el: $("#todoapp")
-    statsTemplate: _.template($("#stats-template").html())
     events:
-      "keypress #new-todo": "createOnEnter"
-      "keyup #new-todo": "showTooltip"
+      "keypress #new-todo":  "createOnEnter"
+      "keyup #new-todo":     "showTooltip"
       "click .todo-clear a": "clearCompleted"
 
     initialize: ->
@@ -85,11 +85,13 @@ $ ->
       #Todos.fetch() # we are bootstrapping the collection in the HTML
 
     render: ->
-      @$("#todo-stats").html @statsTemplate(
-        total: Todos.length
-        done: Todos.done().length
-        remaining: Todos.remaining().length
-      )
+      $('#todo-stats').html ich.stats
+        hasRemainingItems:   Todos.remaining().length > 0
+        numRemainingItems:   Todos.remaining().length
+        labelItemsRemaining: if Todos.remaining().length is 1 then 'item' else 'items'
+        hasDoneItems:        Todos.done().length > 0
+        numDoneItems:        Todos.done().length
+        labelDoneItems:      if Todos.done().length is 1 then 'item' else 'items'
 
     addOne: (todo) ->
       view = new TodoView(model: todo)

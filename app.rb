@@ -41,6 +41,7 @@ class App < Sinatra::Base
       '/js/jquery.js',
       '/js/underscore.js',
       '/js/backbone.js',
+      '/js/icanhaz.js',
       '/js/application.js',
     ]
     css :main, [
