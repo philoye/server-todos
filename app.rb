@@ -37,6 +37,9 @@ class App < Sinatra::Base
   end
 
   assets {
+    js :head, [
+      '/js/modernizr.js'
+    ]
     js :main, [
       '/js/jquery.js',
       '/js/underscore.js',
