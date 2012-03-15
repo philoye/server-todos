@@ -1,4 +1,4 @@
-//@import "compass/reset"
+@import compass
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section
   display: block
@@ -209,24 +209,10 @@ td
 /*
  * Delete below. This is the Todo app's css.
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
-  margin: 0
-  padding: 0
-  border: 0
-  outline: 0
-  font-weight: inherit
-  font-style: inherit
-  font-size: 100%
-  font-family: inherit
-  vertical-align: baseline
-
 body
   line-height: 1
   color: black
   background: white
-
-ol, ul
-  list-style: none
 
 a img
   border: none
@@ -241,21 +227,15 @@ body
   background: #eeeeee
   color: #333333
 
-#todoapp
+#main
   width: 480px
-  margin: 0 auto 40px
+  margin: 0 auto 20px
   background: white
   padding: 20px
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0
   box-shadow: rgba(0, 0, 0, 0.2) 0 5px 6px 0
-  h1
-    font-size: 36px
-    font-weight: bold
-    text-align: center
-    padding: 20px 0 0 0
-    line-height: 1
 
 footer
   width: 520px
@@ -266,6 +246,14 @@ footer
   text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0
   a, a:visited
     color: #369
+
+h1
+  font-size: 36px
+  font-weight: bold
+  text-align: center
+  padding: 20px 0 0 0
+  line-height: 1
+  margin: 0
 
 
 #create-todo
@@ -294,7 +282,9 @@ footer
     margin-left: -85px
 
 #todo-list
-  margin-top: 10px
+  margin: 10px 0 0 0
+  padding: 0
+  list-style: none
   li
     padding: 12px 20px 11px 0
     position: relative
