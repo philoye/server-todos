@@ -280,6 +280,9 @@ h1
     width: 170px
     left: 50%
     margin-left: -85px
+.no-js
+  #create-todo
+    display: none
 
 #todo-list
   margin: 10px 0 0 0
@@ -337,10 +340,16 @@ h1
     width: 20px
     height: 20px
     background: url('/images/destroy.png') no-repeat 0 0
+.js
   li:hover .todo-destroy
     display: block
   .todo-destroy:hover
     background-position: 0 -20px
+.no-js
+  .todo input[type="checkbox"]
+    display: none
+  .todo-destroy
+    display: none
 
 #todo-stats
   *zoom: 1
