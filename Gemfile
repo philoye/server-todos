@@ -17,4 +17,5 @@ gem 'compass'
 gem 'rake'
 gem 'mustache', :require => 'mustache/sinatra'
 gem 'coffee-script'
+gem 'rdiscount'
 

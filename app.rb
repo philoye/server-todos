@@ -53,6 +53,7 @@ class App < Sinatra::Base
   }
 
   get '/' do
+    @readme = markdown :'../README'
     @todos = Item.all
     haml :index
   end
