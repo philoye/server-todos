@@ -71,7 +71,8 @@ class App < Sinatra::Base
   end
 
   post '/api/todos' do
-    Item.create(JSON.parse(request.body.read))
+    item = Item.create(JSON.parse(request.body.read))
+    Item.find(item.id).to_json
   end
 
   delete '/api/todos/:id' do
