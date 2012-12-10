@@ -81,6 +81,10 @@ $ ->
       #Todos.fetch() # we are bootstrapping the collection in the HTML
 
     render: ->
+      _.defer @renderStats
+      @
+
+    renderStats: ->
       $('#todo-stats').html ich.stats
         hasRemainingItems:   Todos.remaining().length > 0
         numRemainingItems:   Todos.remaining().length
