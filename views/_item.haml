@@ -1,4 +1,4 @@
-%li.todo{:class=> "{{done_class}}"}
+%li.todo{:class=> "{{done_class}}", :'data-id' => "{{id}}"}
   %div.display
     <input class="check" type="checkbox" {{done_checked}}>
     %div.todo-text {{text}}
