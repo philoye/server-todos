@@ -49,18 +49,18 @@ $ ->
       @model.toggle()
 
     edit: ->
-      $(@el).addClass "editing"
+      @$el.addClass "editing"
       @$('.todo-input').focus()
 
     close: ->
-      $(@el).removeClass "editing"
       @model.save text: @$('.todo-input').val()
+      @$el.removeClass "editing"
 
     updateOnEnter: (e) ->
       @close()  if e.keyCode is 13
 
     remove: ->
-      $(@el).remove()
+      @$el.remove()
 
     clear: ->
       @model.destroy()
