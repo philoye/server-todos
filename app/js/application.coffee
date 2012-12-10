@@ -31,6 +31,7 @@ $ ->
       "dblclick div.todo-text": "edit"
       "click span.todo-destroy": "clear"
       "keypress .todo-input": "updateOnEnter"
+      "blur .todo-input": 'close'
 
     initialize: ->
       @model.bind "change", @render, this
@@ -41,25 +42,19 @@ $ ->
         done_checked: if @model.get('done') then 'checked' else ''
         done_class:   if @model.get('done') then 'done' else ''
       $(@el).html ich.item(@model)
-      @setText()
       this
 
-    setText: ->
-      text = @model.get("text")
-      @$(".todo-text").text text
-      @input = @$(".todo-input")
-      @input.bind("blur", _.bind(@close, this)).val text
 
     toggleDone: ->
       @model.toggle()
 
     edit: ->
       $(@el).addClass "editing"
-      @input.focus()
+      @$('.todo-input').focus()
 
     close: ->
-      @model.save text: @input.val()
       $(@el).removeClass "editing"
+      @model.save text: @$('.todo-input').val()
 
     updateOnEnter: (e) ->
       @close()  if e.keyCode is 13
