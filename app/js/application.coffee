@@ -38,12 +38,16 @@ $ ->
       @model.bind "destroy", @remove, this
 
     render: ->
-      _.extend @model,
+      attrs = @model.toJSON()
+      _.extend attrs,
         done_checked: if @model.get('done') then 'checked' else ''
         done_class:   if @model.get('done') then 'done' else ''
-      $(@el).html ich.item(@model)
-      this
-
+      $oldEl = @$el
+      $newEl = ich.item(attrs)
+      @setElement($newEl)
+      $oldEl.replaceWith($newEl)
+      @delegateEvents()
+      @
 
     toggleDone: ->
       @model.toggle()
@@ -77,8 +81,7 @@ $ ->
       Todos.bind "add", @addOne, this
       Todos.bind "reset", @addAll, this
       Todos.bind "all", @render, this
-      $('#todo-list').empty()
-      #Todos.fetch() # we are bootstrapping the collection in the HTML
+      @render()
 
     render: ->
       _.defer @renderStats
@@ -92,6 +95,17 @@ $ ->
         hasDoneItems:        Todos.done().length > 0
         numDoneItems:        Todos.done().length
         labelDoneItems:      if Todos.done().length is 1 then 'item' else 'items'
+      @
+
+    attachToView: ->
+      @$('#todo-list li').each ->
+        $item = $(this)
+        id    = $item.attr('data-id')
+        todo  = Todos.get(id)
+        view = new TodoView
+          model: todo
+          el:    $item
+        view.delegateEvents()
 
     addOne: (todo) ->
       view = new TodoView(model: todo)
@@ -109,7 +123,6 @@ $ ->
     clearCompleted: ->
       _.each Todos.done(), (todo) ->
         todo.destroy()
-
       false
 
     showTooltip: (e) ->
